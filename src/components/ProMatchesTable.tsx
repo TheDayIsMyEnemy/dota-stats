@@ -28,9 +28,9 @@ type ProMatchesTableProps = {
 }
 
 const ProMatchesTable = ({ proMatchesList }: ProMatchesTableProps) => {
-    let colPadding = "py-4";
+    let colPadding = "py-3";
 
-    return <Table>
+    return <Table className="">
         <thead>
             <tr>
                 <th className="text-info">League</th>

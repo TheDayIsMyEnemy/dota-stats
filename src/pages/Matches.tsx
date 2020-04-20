@@ -38,7 +38,7 @@ const Matches = (): JSX.Element => {
     }, [activeTab])
 
     return <>
-        <Nav tabs className="mb-5">
+        <Nav tabs className="mb-4">
             <NavItem>
                 <NavLink
                     className={classnames({ active: activeTab === MatchType.Pro })}
@@ -61,7 +61,7 @@ const Matches = (): JSX.Element => {
             </NavItem>
         </Nav>
         <TabContent activeTab={activeTab}>
-            <TabPane tabId="pro">
+            <TabPane tabId="pro" className="">
                 <ProMatchesTable proMatchesList={matches} />
             </TabPane>
             <TabPane tabId="highMmr">
