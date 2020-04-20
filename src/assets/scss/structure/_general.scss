@@ -36,17 +36,12 @@ body {
 }
 
 .nav-link {
-    color: #90c3fb;
+    color: #90c3fb !important;
+    border: transparent !important;
+    background-color: transparent !important;
+
 }
 
 .nav-link.active {
-    color: #90c3fb !important;
-    background-color: transparent !important;
-    border: none !important;
     border-bottom: 3px solid #90c3fb !important;
-}
-
-.nav-link:hover {
-    color: #90c3fb !important;
-    border-color: transparent !important;
 }
