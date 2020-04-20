@@ -1,0 +1,52 @@
+body {
+    background-color: #32407b;
+    // background: #2b5876; /* fallback for old browsers */
+    // background: -webkit-linear-gradient(to right, #4e4376, #2b5876); /* Chrome 10-25, Safari 5.1-6 */
+    // background: linear-gradient(
+    //     to right,
+    //     #4e4376,
+    //     #2b5876
+    // ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.table {
+    background-color: #515585;
+
+}
+
+.color-governor-bay {
+    color: #b0b9b9 !important;
+}
+
+.text-info {
+    color: #c5c5c5 !important;
+}
+
+.text-success {
+    color: #03c530 !important;
+}
+
+.text-danger {
+    color: #ff7783 !important;
+}
+
+.table th {
+    border-top: none !important;
+    border-bottom: 2px solid #c5c5c5 !important;
+}
+
+.nav-link {
+    color: #90c3fb;
+}
+
+.nav-link.active {
+    color: #90c3fb !important;
+    background-color: transparent !important;
+    border: none !important;
+    border-bottom: 3px solid #90c3fb !important;
+}
+
+.nav-link:hover {
+    color: #90c3fb !important;
+    border-color: transparent !important;
+}
