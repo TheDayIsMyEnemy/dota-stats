@@ -1,30 +1,30 @@
 {
   "files": {
-    "main.css": "/dota-stats/static/css/main.9a75094a.chunk.css",
+    "main.css": "/dota-stats/static/css/main.d540a73d.chunk.css",
     "main.js": "/dota-stats/static/js/main.cbea1215.chunk.js",
     "main.js.map": "/dota-stats/static/js/main.cbea1215.chunk.js.map",
-    "runtime-main.js": "/dota-stats/static/js/runtime-main.596d404a.js",
-    "runtime-main.js.map": "/dota-stats/static/js/runtime-main.596d404a.js.map",
+    "runtime-main.js": "/dota-stats/static/js/runtime-main.b80b70c6.js",
+    "runtime-main.js.map": "/dota-stats/static/js/runtime-main.b80b70c6.js.map",
     "static/js/2.fb2b9ae5.chunk.js": "/dota-stats/static/js/2.fb2b9ae5.chunk.js",
     "static/js/2.fb2b9ae5.chunk.js.map": "/dota-stats/static/js/2.fb2b9ae5.chunk.js.map",
     "static/js/3.65341ab3.chunk.js": "/dota-stats/static/js/3.65341ab3.chunk.js",
     "static/js/3.65341ab3.chunk.js.map": "/dota-stats/static/js/3.65341ab3.chunk.js.map",
     "static/js/4.f713dd1e.chunk.js": "/dota-stats/static/js/4.f713dd1e.chunk.js",
     "static/js/4.f713dd1e.chunk.js.map": "/dota-stats/static/js/4.f713dd1e.chunk.js.map",
-    "static/js/5.7f7bc1c3.chunk.js": "/dota-stats/static/js/5.7f7bc1c3.chunk.js",
-    "static/js/5.7f7bc1c3.chunk.js.map": "/dota-stats/static/js/5.7f7bc1c3.chunk.js.map",
+    "static/js/5.73eeeacc.chunk.js": "/dota-stats/static/js/5.73eeeacc.chunk.js",
+    "static/js/5.73eeeacc.chunk.js.map": "/dota-stats/static/js/5.73eeeacc.chunk.js.map",
     "static/js/6.b57a2d49.chunk.js": "/dota-stats/static/js/6.b57a2d49.chunk.js",
     "static/js/6.b57a2d49.chunk.js.map": "/dota-stats/static/js/6.b57a2d49.chunk.js.map",
     "index.html": "/dota-stats/index.html",
-    "precache-manifest.c2bf478d5a5341af89c43f8f86b0aab0.js": "/dota-stats/precache-manifest.c2bf478d5a5341af89c43f8f86b0aab0.js",
+    "precache-manifest.ade72a9589b14133e7fc76cf3ba832fd.js": "/dota-stats/precache-manifest.ade72a9589b14133e7fc76cf3ba832fd.js",
     "service-worker.js": "/dota-stats/service-worker.js",
-    "static/css/main.9a75094a.chunk.css.map": "/dota-stats/static/css/main.9a75094a.chunk.css.map",
+    "static/css/main.d540a73d.chunk.css.map": "/dota-stats/static/css/main.d540a73d.chunk.css.map",
     "static/js/2.fb2b9ae5.chunk.js.LICENSE.txt": "/dota-stats/static/js/2.fb2b9ae5.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.596d404a.js",
+    "static/js/runtime-main.b80b70c6.js",
     "static/js/2.fb2b9ae5.chunk.js",
-    "static/css/main.9a75094a.chunk.css",
+    "static/css/main.d540a73d.chunk.css",
     "static/js/main.cbea1215.chunk.js"
   ]
 }
