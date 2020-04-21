@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import ProMatchesTable, { ProMatch } from '../components/ProMatchesTable';
 import { Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
 import { Link, useLocation } from 'react-router-dom';
+import ProMatchesTable, { ProMatch } from '../components/ProMatchesTable';
+import PublicMatchesTable from '../components/PublicMatchesTable';
 import classnames from 'classnames';
 import settings from '../config';
 import { enumIsDefined } from '../utilities/utilities';
@@ -21,9 +22,9 @@ const resources = {
 const Matches = (): JSX.Element => {
     let matchType = useLocation().pathname.split('/').pop();
     let tab = enumIsDefined(MatchType, matchType) ? matchType : MatchType.Pro;
-    const [matches, setMaches] = useState<ProMatch[]>(null);
+    const [matches, setMaches] = useState(null);
     const [activeTab, setActiveTab] = useState(tab);
-    console.log(heroes);
+
     const toggle = (tab) => {
         if (activeTab !== tab) {
             setActiveTab(tab);
@@ -33,7 +34,10 @@ const Matches = (): JSX.Element => {
     useEffect(() => {
         fetch(`${settings.API_URL}/${resources[activeTab]}`)
             .then(res => res.json())
-            .then(json => setMaches(json))
+            .then(json => {
+                console.log(json)
+                setMaches(json)
+            })
             .catch(error => console.log(error))
     }, [activeTab])
 
@@ -62,10 +66,10 @@ const Matches = (): JSX.Element => {
         </Nav>
         <TabContent activeTab={activeTab}>
             <TabPane tabId="pro" className="">
-                <ProMatchesTable proMatchesList={matches} />
+                <ProMatchesTable matches={matches} />
             </TabPane>
             <TabPane tabId="highMmr">
-
+                <PublicMatchesTable matches={matches} />
             </TabPane>
         </TabContent>
     </>

@@ -1,9 +1,9 @@
 import React from 'react';
-import { Table } from 'reactstrap';
 import { toMMSS } from '../utilities/utilities';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrophy } from '@fortawesome/free-solid-svg-icons';
 import moment from 'moment';
+import MatchesTable, { TableHeader } from './MatchesTable';
 
 export interface ProMatch {
     match_id: number;
@@ -24,39 +24,35 @@ export interface ProMatch {
 }
 
 type ProMatchesTableProps = {
-    proMatchesList: ProMatch[];
+    matches: ProMatch[];
 }
 
-const ProMatchesTable = ({ proMatchesList }: ProMatchesTableProps) => {
+const headers: TableHeader[] = [
+    { title: "League" }, { title: "Match Id" }, { title: "Duration" },
+    { title: "Radiant", className: "text-success" }, { title: "Dire", className: "text-danger" }, { title: "Finished" }]
+
+
+const ProMatchesTable = ({ matches }: ProMatchesTableProps) => {
     let colPadding = "py-3";
 
-    return <Table className="">
-        <thead>
-            <tr>
-                <th className="text-info">League</th>
-                <th className="text-info">Match Id</th>
-                <th className="text-info">Duration</th>
-                <th className="text-success">Radiant</th>
-                <th className="text-danger">Dire</th>
-                <th className="text-info">Finished</th>
-            </tr>
-        </thead>
-        {proMatchesList &&
-            <tbody>
-                {proMatchesList && proMatchesList.map(match => {
-                    let dateFromNow = moment.utc(new Date((match.start_time + match.duration) * 1000)).fromNow();
-                    return <tr key={match.match_id}>
-                        <td className={`text-info ${colPadding}`}>{match.league_name}</td>
-                        <td className={`text-info ${colPadding}`}>{match.match_id}</td>
-                        <td className={`text-info text-center ${colPadding}`}>{toMMSS(match.duration)}</td>
-                        <td className={`text-warning ${colPadding}`}>{match.radiant_win && <FontAwesomeIcon icon={faTrophy} size="sm" />} <span className="text-success">{match.radiant_name}</span></td>
-                        <td className={`text-warning ${colPadding}`}>{!match.radiant_win && <FontAwesomeIcon icon={faTrophy} size="sm" />} <span className="text-danger">{match.dire_name}</span></td>
-                        <td className={`text-info ${colPadding}`}>{dateFromNow}</td>
-                    </tr>
-                })}
-            </tbody>
+    let data = matches && matches.map(match => {
+        let dateFromNow = moment.utc(new Date((match.start_time + match.duration) * 1000)).fromNow();
+        return {
+            key: `${match.match_id}`,
+            renderItem: () => {
+                return <>
+                    <td className={colPadding}>{match.league_name}</td>
+                    <td className={colPadding}>{match.match_id}</td>
+                    <td className={`text-center ${colPadding}`}>{toMMSS(match.duration)}</td>
+                    <td className={colPadding}>{match.radiant_win && <FontAwesomeIcon icon={faTrophy} size="sm" />} <span className="text-success">{match.radiant_name}</span></td>
+                    <td className={colPadding}>{!match.radiant_win && <FontAwesomeIcon icon={faTrophy} size="sm" />} <span className="text-danger">{match.dire_name}</span></td>
+                    <td className={colPadding}>{dateFromNow}</td>
+                </>
+            }
         }
-    </Table>
+    })
+
+    return <MatchesTable headers={headers} data={data} />
 }
 
 export default ProMatchesTable;
