@@ -1,14 +1,16 @@
 @import "../variables";
 
 body {
-    // background-color: #32407b;
-    background: #2b5876; /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #4e4376, #2b5876); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(
-        to right,
-        #4e4376,
-        #2b5876
-    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: rgba(73,155,234,1);
+    background: -moz-linear-gradient(left, rgba(73,155,234,1) 0%, rgba(50,64,123,1) 0%, rgba(50,64,123,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(73,155,234,1)), color-stop(0%, rgba(50,64,123,1)), color-stop(100%, rgba(50,64,123,1)));
+    background: -webkit-linear-gradient(left, rgba(73,155,234,1) 0%, rgba(50,64,123,1) 0%, rgba(50,64,123,1) 100%);
+    background: -o-linear-gradient(left, rgba(73,155,234,1) 0%, rgba(50,64,123,1) 0%, rgba(50,64,123,1) 100%);
+    background: -ms-linear-gradient(left, rgba(73,155,234,1) 0%, rgba(50,64,123,1) 0%, rgba(50,64,123,1) 100%);
+    background: linear-gradient(to right, rgba(73,155,234,1) 0%, rgba(50,64,123,1) 0%, rgba(50,64,123,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#499bea', endColorstr='#32407b', GradientType=1 );
+
+    font-family: 'Consolas', sans-serif;
 }
 
 .table {
@@ -23,6 +25,12 @@ body {
 
 .table td {
     color: #c5c5c5;
+}
+
+.table td img {
+    width: 50px;
+    margin-left: 3px;
+    margin-right: 3px;
 }
 
 .nav a {

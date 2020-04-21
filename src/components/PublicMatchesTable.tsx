@@ -1,5 +1,5 @@
 import React from 'react';
-import MatchesTable, { TableHeader } from './MatchesTable';
+import CommonTable, { TableHeader } from './CommonTable';
 import heroes from 'dotaconstants/build/heroes.json';
 import settings from '../config';
 import { toMMSS } from '../utilities/utilities';
@@ -32,7 +32,6 @@ const renderHeroImages = (team: string) => {
         heroes[heroId] ? (
             <img
                 key={heroId}
-                style={{ width: '50px' }}
                 src={settings.ODOTA_URL + heroes[heroId].img}
                 alt=""
             />) : null);
@@ -40,7 +39,6 @@ const renderHeroImages = (team: string) => {
 
 const PublicMatchesTable = ({ matches }: PublicMatchesTableProps) => {
     let colPadding = "py-1";
-    console.log(heroes)
     console.log(matches);
     let data = matches && matches.map(match => {
         return {
@@ -60,7 +58,7 @@ const PublicMatchesTable = ({ matches }: PublicMatchesTableProps) => {
         }
     })
 
-    return <MatchesTable headers={headers} data={data} />
+    return <CommonTable headers={headers} data={data} />
 }
 
 export default PublicMatchesTable;

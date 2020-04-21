@@ -3,7 +3,7 @@ import { toMMSS } from '../utilities/utilities';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrophy } from '@fortawesome/free-solid-svg-icons';
 import moment from 'moment';
-import MatchesTable, { TableHeader } from './MatchesTable';
+import CommonTable, { TableHeader } from './CommonTable';
 
 export interface ProMatch {
     match_id: number;
@@ -52,7 +52,7 @@ const ProMatchesTable = ({ matches }: ProMatchesTableProps) => {
         }
     })
 
-    return <MatchesTable headers={headers} data={data} />
+    return <CommonTable headers={headers} data={data} />
 }
 
 export default ProMatchesTable;

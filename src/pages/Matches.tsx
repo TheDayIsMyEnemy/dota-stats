@@ -34,10 +34,7 @@ const Matches = (): JSX.Element => {
     useEffect(() => {
         fetch(`${settings.API_URL}/${resources[activeTab]}`)
             .then(res => res.json())
-            .then(json => {
-                console.log(json)
-                setMaches(json)
-            })
+            .then(json => setMaches(json))
             .catch(error => console.log(error))
     }, [activeTab])
 

@@ -12,12 +12,12 @@ export type TableRow = {
     className?: string;
 }
 
-type MatchesTableProps = {
+type CommonTableProps = {
     headers: TableHeader[];
     data: TableRow[];
 }
 
-const MatchesTable = ({ headers, data }: MatchesTableProps): JSX.Element => {
+const CommonTable = ({ headers, data }: CommonTableProps): JSX.Element => {
     // console.log(headers)
     // console.log(data)
     return <Table>
@@ -34,4 +34,4 @@ const MatchesTable = ({ headers, data }: MatchesTableProps): JSX.Element => {
     </Table>
 }
 
-export default MatchesTable;
+export default CommonTable;
