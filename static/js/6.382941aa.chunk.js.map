@@ -1,0 +1,1 @@
+{"version":3,"sources":["pages/Heroes.tsx"],"names":["Heroes"],"mappings":"+GAAA,2BAMeA,UAJA,WACX,OAAO","file":"static/js/6.382941aa.chunk.js","sourcesContent":["import React from 'react';\r\n\r\nconst Heroes = () => {\r\n    return <></>\r\n}\r\n\r\nexport default Heroes;"],"sourceRoot":""}

@@ -1,1 +1,0 @@
-{"version":3,"sources":["pages/Teams.tsx"],"names":["Teams"],"mappings":"+GAAA,2BAQeA,UAND,WACV,OAAO,oCACP","file":"static/js/6.b57a2d49.chunk.js","sourcesContent":["import React from 'react';\r\n\r\nconst Teams = () => {\r\n    return <>\r\n    <h1>s</h1>\r\n    </>\r\n}\r\n\r\nexport default Teams;"],"sourceRoot":""}
