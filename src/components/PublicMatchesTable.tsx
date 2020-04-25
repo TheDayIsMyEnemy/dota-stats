@@ -25,40 +25,34 @@ type PublicMatchesTableProps = {
     matches: PublicMatch[];
 }
 
-const headers: TableHeader[] = [{ title: "Match Id", }, { title: "Duration" }, { title: "Radiant", }, { title: "Dire" }]
-
 const renderHeroImages = (team: string) => {
     return team && team.split(',').map(heroId =>
         heroes[heroId] ? (
             <img
                 key={heroId}
                 src={settings.ODOTA_URL + heroes[heroId].img}
-                alt=""
+                alt={heroes[heroId].localized_name}
             />) : null);
 }
 
 const PublicMatchesTable = ({ matches }: PublicMatchesTableProps) => {
-    let colPadding = "py-1";
-    console.log(matches);
-    let data = matches && matches.map(match => {
-        return {
-            key: `${match.match_id}`,
-            renderItem: () => {
-                return <>
-                    <td className={colPadding}>{match.match_id}</td>
-                    <td className={colPadding}>{toMMSS(match.duration)}</td>
-                    <td>
-                        {renderHeroImages(match.radiant_team)}
-                    </td>
-                    <td>
-                        {renderHeroImages(match.dire_team)}
-                    </td>
-                </>
-            }
-        }
-    })
+    const config = {
+        renderTableRowKey: ({ match_id }) => match_id,
+        tableHeaders: [
+            { name: "Match Id" },
+            { name: "Duration" },
+            { name: "Radiant" },
+            { name: "Dire" }
+        ],
+        tableData: [
+            { render: ({ match_id }) => match_id },
+            { render: ({ duration }) => toMMSS(duration) },
+            { render: ({ radiant_team }) => renderHeroImages(radiant_team) },
+            { render: ({ dire_team }) => renderHeroImages(dire_team) }
+        ],
+    }
 
-    return <CommonTable headers={headers} data={data} />
+    return <CommonTable config={config} data={matches} />
 }
 
 export default PublicMatchesTable;

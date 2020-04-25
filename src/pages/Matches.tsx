@@ -62,7 +62,7 @@ const Matches = (): JSX.Element => {
             </NavItem>
         </Nav>
         <TabContent activeTab={activeTab}>
-            <TabPane tabId="pro" className="">
+            <TabPane tabId="pro">
                 <ProMatchesTable matches={matches} />
             </TabPane>
             <TabPane tabId="highMmr">

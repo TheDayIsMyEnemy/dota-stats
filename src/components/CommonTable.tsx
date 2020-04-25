@@ -2,34 +2,52 @@ import React from 'react';
 import { Table } from 'reactstrap';
 
 export type TableHeader = {
-    title: string;
+    name: string;
     className?: string;
 }
 
-export type TableRow = {
-    key: any;
-    renderItem: any;
+export type TableData = {
+    render: (props?: Object, index?: number) => any;
+    className?: string;
+}
+
+export interface TableConfig {
+    renderTableRowKey: (props?: Object) => string;
+    tableHeaders: TableHeader[];
+    tableData: TableData[];
     className?: string;
 }
 
 type CommonTableProps = {
-    headers: TableHeader[];
-    data: TableRow[];
+    config: TableConfig;
+    data: any;
 }
 
-const CommonTable = ({ headers, data }: CommonTableProps): JSX.Element => {
-    // console.log(headers)
-    // console.log(data)
-    return <Table>
+const CommonTable = ({ config, data }: CommonTableProps): JSX.Element => {
+    return <Table className={config.className}>
         <thead>
             <tr>
-                {headers && headers.map(h => <th className={h.className}>{h.title}</th>)}
+                {config.tableHeaders &&
+                    config.tableHeaders
+                        .map(column =>
+                            <th key={column.name} className={column.className}>
+                                {column.name}
+                            </th>
+                        )}
             </tr>
         </thead>
         <tbody>
-            {data && data.map(r => <tr key={r.key} className={r.className}>
-                {r.renderItem()}
-            </tr>)}
+            {data &&
+                data
+                    .map((item, i) =>
+                        <tr key={config.renderTableRowKey(item)}>
+                            {config.tableData.map((cell, j) =>
+                                <td key={j} className={cell.className}>
+                                    {cell.render(item, i)}
+                                </td>)}
+                        </tr>
+                    )
+            }
         </tbody>
     </Table>
 }

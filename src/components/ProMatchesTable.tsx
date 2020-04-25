@@ -3,7 +3,7 @@ import { toMMSS } from '../utilities/utilities';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrophy } from '@fortawesome/free-solid-svg-icons';
 import moment from 'moment';
-import CommonTable, { TableHeader } from './CommonTable';
+import CommonTable, { TableHeader, TableConfig } from './CommonTable';
 
 export interface ProMatch {
     match_id: number;
@@ -27,32 +27,41 @@ type ProMatchesTableProps = {
     matches: ProMatch[];
 }
 
-const headers: TableHeader[] = [
-    { title: "League" }, { title: "Match Id" }, { title: "Duration" },
-    { title: "Radiant", className: "text-success" }, { title: "Dire", className: "text-danger" }, { title: "Finished" }]
-
 
 const ProMatchesTable = ({ matches }: ProMatchesTableProps) => {
-    let colPadding = "py-3";
+    let colPadding = "";
 
-    let data = matches && matches.map(match => {
-        let dateFromNow = moment.utc(new Date((match.start_time + match.duration) * 1000)).fromNow();
-        return {
-            key: `${match.match_id}`,
-            renderItem: () => {
-                return <>
-                    <td className={colPadding}>{match.league_name}</td>
-                    <td className={colPadding}>{match.match_id}</td>
-                    <td className={`text-center ${colPadding}`}>{toMMSS(match.duration)}</td>
-                    <td className={colPadding}>{match.radiant_win && <FontAwesomeIcon icon={faTrophy} size="sm" />} <span className="text-success">{match.radiant_name}</span></td>
-                    <td className={colPadding}>{!match.radiant_win && <FontAwesomeIcon icon={faTrophy} size="sm" />} <span className="text-danger">{match.dire_name}</span></td>
-                    <td className={colPadding}>{dateFromNow}</td>
-                </>
-            }
-        }
-    })
+    const config = {
+        renderTableRowKey: ({ match_id }) => (match_id),
+        tableHeaders: [
+            { name: "League" }, { name: "Match Id" }, { name: "Duration" },
+            { name: "Radiant", className: "text-success" }, { name: "Dire", className: "text-danger" }, { name: "Finished" }]
+        ,
+        tableData: [
+            { render: ({ league_name }) => league_name, },
+            { render: ({ match_id }) => match_id, },
+            { render: ({ duration }) => toMMSS(duration), className: "text-center" },
+            {
+                render: ({ radiant_win, radiant_name }) => {
+                    return <>
+                        {radiant_win && <FontAwesomeIcon icon={faTrophy} size="sm" className="mr-1" />}
+                        <span className="text-success">{radiant_name}</span>
+                    </>
+                },
+            },
+            {
+                render: ({ radiant_win, dire_name }) => {
+                    return <>
+                        {!radiant_win && <FontAwesomeIcon icon={faTrophy} size="sm" className="mr-1" />}
+                        <span className="text-danger ">{dire_name}</span>
+                    </>
+                },
+            },
+            { render: ({ start_time, duration }) => moment.utc(new Date((start_time + duration) * 1000)).fromNow(), }
+        ]
+    }
 
-    return <CommonTable headers={headers} data={data} />
+    return <CommonTable config={config} data={matches} />
 }
 
 export default ProMatchesTable;

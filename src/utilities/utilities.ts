@@ -8,4 +8,17 @@ const enumIsDefined = (enumType: object, value: string): boolean => {
     return Object.keys(enumType).filter(k => k.toLocaleLowerCase() === value.toLocaleLowerCase()).length > 0;
 }
 
-export { toMMSS, enumIsDefined };
+const getOrdinal = (rank: number): string => {
+    if (rank % 10 == 1) {
+        return rank + "st";
+    }
+    else if (rank % 10 == 2) {
+        return rank + "nd";
+    }
+    else if (rank % 10 == 3) {
+        return rank + "rd";
+    }
+    return rank + "th";
+}
+
+export { toMMSS, enumIsDefined, getOrdinal };
