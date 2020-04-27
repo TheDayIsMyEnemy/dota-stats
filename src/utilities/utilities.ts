@@ -8,17 +8,22 @@ const enumIsDefined = (enumType: object, value: string): boolean => {
     return Object.keys(enumType).filter(k => k.toLocaleLowerCase() === value.toLocaleLowerCase()).length > 0;
 }
 
-const getOrdinal = (rank: number): string => {
-    if (rank % 10 == 1) {
-        return rank + "st";
+const getOrdinal = (number: number): string => {
+    number %= 10;
+    switch (number) {
+        case 1:
+            return number + "st";
+        case 2:
+            return number + "nd";
+        case 3:
+            return number + "rd";
+        default:
+            return number + "th";
     }
-    else if (rank % 10 == 2) {
-        return rank + "nd";
-    }
-    else if (rank % 10 == 3) {
-        return rank + "rd";
-    }
-    return rank + "th";
 }
 
-export { toMMSS, enumIsDefined, getOrdinal };
+const getPercentage = (total, number) => {
+    return (number / total * 100).toFixed(1);
+}
+
+export { toMMSS, enumIsDefined, getOrdinal, getPercentage };

@@ -1,5 +1,5 @@
 import React from 'react';
-import CommonTable, { TableHeader } from './CommonTable';
+import Table, { TableHeaderConfig } from './Table';
 import heroes from 'dotaconstants/build/heroes.json';
 import settings from '../config';
 import { toMMSS } from '../utilities/utilities';
@@ -37,7 +37,7 @@ const renderHeroImages = (team: string) => {
 
 const PublicMatchesTable = ({ matches }: PublicMatchesTableProps) => {
     const config = {
-        renderTableRowKey: ({ match_id }) => match_id,
+        keyId: "match_id",
         tableHeaders: [
             { name: "Match Id" },
             { name: "Duration" },
@@ -52,7 +52,7 @@ const PublicMatchesTable = ({ matches }: PublicMatchesTableProps) => {
         ],
     }
 
-    return <CommonTable config={config} data={matches} />
+    return <Table config={config} data={matches} />
 }
 
 export default PublicMatchesTable;

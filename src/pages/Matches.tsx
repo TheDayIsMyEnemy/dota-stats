@@ -6,7 +6,6 @@ import PublicMatchesTable from '../components/PublicMatchesTable';
 import classnames from 'classnames';
 import settings from '../config';
 import { enumIsDefined } from '../utilities/utilities';
-import heroes from 'dotaconstants/build/heroes.json';
 import wretcher from 'wretch';
 
 export enum MatchType {

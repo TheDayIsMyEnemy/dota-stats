@@ -1,7 +1,7 @@
 import React from 'react';
 import { Progress } from 'reactstrap';
-import CommonTable, { TableHeader } from './CommonTable';
-import { getOrdinal } from '../utilities/utilities';
+import Table from './Table';
+import { getOrdinal, getPercentage } from '../utilities/utilities';
 
 type Team = {
     team_id: number;
@@ -19,8 +19,10 @@ type TeamsTableProps = {
 }
 
 const TeamsTable = ({ teams }: TeamsTableProps) => {
+    const { rating: maxRating, wins: maxWins, losses: maxLosses } = teams !== undefined && teams[0];
+
     let config = {
-        renderTableRowKey: ({ team_id }) => team_id,
+        keyId: "team_id",
         tableHeaders: [
             { name: "Rank" },
             { name: "Name" },
@@ -31,13 +33,18 @@ const TeamsTable = ({ teams }: TeamsTableProps) => {
         tableData: [
             { render: (_, index) => getOrdinal(++index) },
             { render: ({ tag, logo_url, name }) => <><img key={tag} src={logo_url} alt={tag} />{name}</> },
-            { render: ({ rating }) => Math.floor(rating) },
-            { render: ({ wins }) => wins },
-            { render: ({ losses }) => losses, }
+            {
+                render: ({ rating }) => {
+                    rating = Math.floor(rating);
+                    return <>{rating}<Progress value={getPercentage(maxRating, rating)} color="success" /></>
+                }
+            },
+            { render: ({ wins }) => <>{wins}<Progress value={getPercentage(maxWins, wins)} color="success" /></> },
+            { render: ({ losses }) => <>{losses}<Progress value={getPercentage(maxLosses, losses)} color="success" /></>, }
         ],
     }
 
-    return <CommonTable config={config} data={teams && teams.slice(0, 100)} />
+    return <Table config={config} data={teams && teams.slice(0, 100)} />
 }
 
 export default TeamsTable;

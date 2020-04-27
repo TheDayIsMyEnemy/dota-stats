@@ -3,7 +3,7 @@ import { toMMSS } from '../utilities/utilities';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrophy } from '@fortawesome/free-solid-svg-icons';
 import moment from 'moment';
-import CommonTable, { TableHeader, TableConfig } from './CommonTable';
+import Table from './Table';
 
 export interface ProMatch {
     match_id: number;
@@ -27,12 +27,9 @@ type ProMatchesTableProps = {
     matches: ProMatch[];
 }
 
-
 const ProMatchesTable = ({ matches }: ProMatchesTableProps) => {
-    let colPadding = "";
-
     const config = {
-        renderTableRowKey: ({ match_id }) => (match_id),
+        keyId: "match_id",
         tableHeaders: [
             { name: "League" }, { name: "Match Id" }, { name: "Duration" },
             { name: "Radiant", className: "text-success" }, { name: "Dire", className: "text-danger" }, { name: "Finished" }]
@@ -42,26 +39,22 @@ const ProMatchesTable = ({ matches }: ProMatchesTableProps) => {
             { render: ({ match_id }) => match_id, },
             { render: ({ duration }) => toMMSS(duration), className: "text-center" },
             {
-                render: ({ radiant_win, radiant_name }) => {
-                    return <>
-                        {radiant_win && <FontAwesomeIcon icon={faTrophy} size="sm" className="mr-1" />}
-                        <span className="text-success">{radiant_name}</span>
-                    </>
-                },
+                render: ({ radiant_win, radiant_name }) => <>
+                    {radiant_win && <FontAwesomeIcon icon={faTrophy} size="sm" className="mr-1" />}
+                    <span className="text-success">{radiant_name}</span>
+                </>,
             },
             {
-                render: ({ radiant_win, dire_name }) => {
-                    return <>
-                        {!radiant_win && <FontAwesomeIcon icon={faTrophy} size="sm" className="mr-1" />}
-                        <span className="text-danger ">{dire_name}</span>
-                    </>
-                },
+                render: ({ radiant_win, dire_name }) => <>
+                    {!radiant_win && <FontAwesomeIcon icon={faTrophy} size="sm" className="mr-1" />}
+                    <span className="text-danger ">{dire_name}</span>
+                </>,
             },
             { render: ({ start_time, duration }) => moment.utc(new Date((start_time + duration) * 1000)).fromNow(), }
         ]
     }
 
-    return <CommonTable config={config} data={matches} />
+    return <Table config={config} data={matches} />
 }
 
 export default ProMatchesTable;
