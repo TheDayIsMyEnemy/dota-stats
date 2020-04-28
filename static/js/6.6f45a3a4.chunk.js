@@ -1,2 +1,0 @@
-(this["webpackJsonpdota-stats"]=this["webpackJsonpdota-stats"]||[]).push([[6],{70:function(t,a,n){"use strict";n.r(a);var s=n(0),e=n.n(s);a.default=function(){return e.a.createElement(e.a.Fragment,null)}}}]);
-//# sourceMappingURL=6.6f45a3a4.chunk.js.map
