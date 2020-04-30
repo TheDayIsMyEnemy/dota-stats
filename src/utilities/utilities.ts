@@ -9,8 +9,8 @@ const enumIsDefined = (enumType: object, value: string): boolean => {
 }
 
 const getOrdinal = (number: number): string => {
-    number %= 10;
-    switch (number) {
+    let remainder = number % 10;
+    switch (remainder) {
         case 1:
             return number + "st";
         case 2:

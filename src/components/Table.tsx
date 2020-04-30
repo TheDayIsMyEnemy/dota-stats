@@ -1,49 +1,39 @@
 import React from 'react';
 import classnames from 'classnames';
 
-export type TableHeaderConfig = {
-    name: string;
-    className?: string;
-}
-
-export type TableDataConfig = {
-    render: (data?: any, index?: number) => any;
-    className?: string;
-}
-
-export interface TableConfig {
-    keyId: string;
-    tableHeaders: TableHeaderConfig[];
-    tableData: TableDataConfig[];
-    className?: string;
+export interface TableColumn {
+    header: string;
+    headerClassName?: string;
+    renderCell: (data?: any, index?: number) => any;
+    cellClassName?: string;
 }
 
 type TableProps = {
-    config: TableConfig;
+    columns: TableColumn[];
     data: any;
+    keySelector: string;
+    className?: string;
 }
 
-const Table = ({ config, data }: TableProps): JSX.Element => {
-    return <table className={classnames('table', config.className)}>
+const Table = ({ columns, data, keySelector, className }: TableProps): JSX.Element => {
+    return <table className={classnames('table', className)}>
         <thead>
             <tr>
-                {config.tableHeaders &&
-                    config.tableHeaders
-                        .map(column =>
-                            <th key={column.name} className={column.className}>
-                                {column.name}
+                {columns &&
+                    columns.map(column =>
+                            <th key={column.header} className={column.headerClassName}>
+                                {column.header}
                             </th>
                         )}
             </tr>
         </thead>
         <tbody>
             {data &&
-                data
-                    .map((row, rowIndex) =>
-                        <tr key={row[config.keyId]}>
-                            {config.tableData.map((column, columnIndex) =>
-                                <td key={`${rowIndex}_${columnIndex}`} className={column.className}>
-                                    {column.render(row, rowIndex)}
+                data.map((row, index) =>
+                        <tr key={row[keySelector]}>
+                            {columns.map((column, cIndex) =>
+                                <td key={`${index}_${cIndex}`} className={column.cellClassName}>
+                                    {column.renderCell(row, index)}
                                 </td>)}
                         </tr>
                     )

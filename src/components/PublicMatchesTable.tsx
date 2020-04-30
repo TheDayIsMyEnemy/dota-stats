@@ -1,5 +1,5 @@
 import React from 'react';
-import Table, { TableHeaderConfig } from './Table';
+import Table from './Table';
 import heroes from 'dotaconstants/build/heroes.json';
 import settings from '../config';
 import { toMMSS } from '../utilities/utilities';
@@ -36,23 +36,26 @@ const renderHeroImages = (team: string) => {
 }
 
 const PublicMatchesTable = ({ matches }: PublicMatchesTableProps) => {
-    const config = {
-        keyId: "match_id",
-        tableHeaders: [
-            { name: "Match Id" },
-            { name: "Duration" },
-            { name: "Radiant" },
-            { name: "Dire" }
-        ],
-        tableData: [
-            { render: ({ match_id }) => match_id },
-            { render: ({ duration }) => toMMSS(duration) },
-            { render: ({ radiant_team }) => renderHeroImages(radiant_team) },
-            { render: ({ dire_team }) => renderHeroImages(dire_team) }
-        ],
-    }
+    const columns = [
+        {
+            header: "Match Id",
+            renderCell: ({ match_id }) => match_id
+        },
+        {
+            header: "Duration",
+            renderCell: ({ duration }) => toMMSS(duration)
+        },
+        {
+            header: "Radiant",
+            renderCell: ({ radiant_team }) => renderHeroImages(radiant_team)
+        },
+        {
+            header: "Dire",
+            renderCell: ({ dire_team }) => renderHeroImages(dire_team)
+        }
+    ];
 
-    return <Table config={config} data={matches} />
+    return <Table columns={columns} data={matches} keySelector="match_id" />
 }
 
 export default PublicMatchesTable;

@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrophy } from '@fortawesome/free-solid-svg-icons';
 import moment from 'moment';
 import Table from './Table';
+import { Link } from 'react-router-dom';
+import { Badge } from 'reactstrap';
 
 export interface ProMatch {
     match_id: number;
@@ -28,33 +30,36 @@ type ProMatchesTableProps = {
 }
 
 const ProMatchesTable = ({ matches }: ProMatchesTableProps) => {
-    const config = {
-        keyId: "match_id",
-        tableHeaders: [
-            { name: "League" }, { name: "Match Id" }, { name: "Duration" },
-            { name: "Radiant", className: "text-success" }, { name: "Dire", className: "text-danger" }, { name: "Finished" }]
-        ,
-        tableData: [
-            { render: ({ league_name }) => league_name, },
-            { render: ({ match_id }) => match_id, },
-            { render: ({ duration }) => toMMSS(duration), className: "text-center" },
-            {
-                render: ({ radiant_win, radiant_name }) => <>
-                    {radiant_win && <FontAwesomeIcon icon={faTrophy} size="sm" className="mr-1" />}
-                    <span className="text-success">{radiant_name}</span>
-                </>,
-            },
-            {
-                render: ({ radiant_win, dire_name }) => <>
-                    {!radiant_win && <FontAwesomeIcon icon={faTrophy} size="sm" className="mr-1" />}
-                    <span className="text-danger ">{dire_name}</span>
-                </>,
-            },
-            { render: ({ start_time, duration }) => moment.utc(new Date((start_time + duration) * 1000)).fromNow(), }
-        ]
-    }
+    const columns = [
+        {
+            header: "Match Id",
+            renderCell: ({ match_id, league_name, start_time, duration }) =>
+                <>
+                    <Link to="">{match_id}</Link>
+                    <div className="text-sm">{moment.unix(start_time + duration).fromNow()}/{league_name}</div>
+                </>
+        },
+        {
+            header: "Duration",
+            renderCell: ({ duration }) => toMMSS(duration), cellClassName: "text-center"
+        },
+        {
+            header: "Radiant", headerClassName: "text-success",
+            renderCell: ({ radiant_win, radiant_name }) => <>
+                {radiant_win && <FontAwesomeIcon icon={faTrophy} size="sm" className="mr-1" />}
+                <span className="text-success">{radiant_name}</span>
+            </>
+        },
+        {
+            header: "Dire", headerClassName: "text-danger",
+            renderCell: ({ radiant_win, dire_name }) => <>
+                {!radiant_win && <FontAwesomeIcon icon={faTrophy} size="sm" className="mr-1" />}
+                <span className="text-danger ">{dire_name}</span>
+            </>
+        },
+    ];
 
-    return <Table config={config} data={matches} />
+    return <Table columns={columns} data={matches} keySelector="match_id" />
 }
 
 export default ProMatchesTable;
