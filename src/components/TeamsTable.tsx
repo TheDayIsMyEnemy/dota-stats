@@ -33,9 +33,8 @@ const TeamsTable = ({ teams }: TeamsTableProps) => {
             renderCell: ({ last_match_time, name, tag, logo_url }) =>
                 <>
                     <img key={tag} src={logo_url} alt={tag} />
-                    <span>{name}</span>
-                    <div>{moment.unix(last_match_time).fromNow()}</div>
-
+                    <Link to="">{name}</Link>
+                    <div className="text-sm">{moment.unix(last_match_time).fromNow()}</div>
                 </>
         },
         {

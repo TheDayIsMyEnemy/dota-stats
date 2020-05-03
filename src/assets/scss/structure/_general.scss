@@ -1,50 +1,62 @@
 @import "../variables";
 
 body {
-    background: rgba(73,155,234,1);
-    background: -moz-linear-gradient(left, rgba(73,155,234,1) 0%, rgba(50,64,123,1) 0%, rgba(50,64,123,1) 100%);
-    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(73,155,234,1)), color-stop(0%, rgba(50,64,123,1)), color-stop(100%, rgba(50,64,123,1)));
-    background: -webkit-linear-gradient(left, rgba(73,155,234,1) 0%, rgba(50,64,123,1) 0%, rgba(50,64,123,1) 100%);
-    background: -o-linear-gradient(left, rgba(73,155,234,1) 0%, rgba(50,64,123,1) 0%, rgba(50,64,123,1) 100%);
-    background: -ms-linear-gradient(left, rgba(73,155,234,1) 0%, rgba(50,64,123,1) 0%, rgba(50,64,123,1) 100%);
-    background: linear-gradient(to right, rgba(73,155,234,1) 0%, rgba(50,64,123,1) 0%, rgba(50,64,123,1) 100%);
+    background: rgba(73, 155, 234, 1);
+    background: -moz-linear-gradient(
+        left,
+        rgba(73, 155, 234, 1) 0%,
+        rgba(50, 64, 123, 1) 0%,
+        rgba(50, 64, 123, 1) 100%
+    );
+    background: -webkit-gradient(
+        left top,
+        right top,
+        color-stop(0%, rgba(73, 155, 234, 1)),
+        color-stop(0%, rgba(50, 64, 123, 1)),
+        color-stop(100%, rgba(50, 64, 123, 1))
+    );
+    background: -webkit-linear-gradient(
+        left,
+        rgba(73, 155, 234, 1) 0%,
+        rgba(50, 64, 123, 1) 0%,
+        rgba(50, 64, 123, 1) 100%
+    );
+    background: -o-linear-gradient(left, rgba(73, 155, 234, 1) 0%, rgba(50, 64, 123, 1) 0%, rgba(50, 64, 123, 1) 100%);
+    background: -ms-linear-gradient(left, rgba(73, 155, 234, 1) 0%, rgba(50, 64, 123, 1) 0%, rgba(50, 64, 123, 1) 100%);
+    background: linear-gradient(to right, rgba(73, 155, 234, 1) 0%, rgba(50, 64, 123, 1) 0%, rgba(50, 64, 123, 1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#499bea', endColorstr='#32407b', GradientType=1 );
 
-    font-family: 'Consolas', sans-serif;
+    font-family: "Consolas", sans-serif;
 }
 
 .table {
     // background-color: #515585;
-}
+    th {
+        border-top: none !important;
+        border-bottom: 2px solid #c5c5c5 !important;
+        color: #c5c5c5;
+        padding: 0.5rem 1rem !important;
+    }
+    td {
+        color: #b7a3a3;
+        padding: 0.5rem 1rem !important;
 
-.table th {
-    border-top: none !important;
-    border-bottom: 2px solid #c5c5c5 !important;
-    color: #c5c5c5;
-}
-
-.table td {
-    color: #b7a3a3;
-}
-
-.table td img {
-    width: 50px;
-    margin-left: 3px;
-    margin-right: 3px;
-}
-
-.nav a {
-    color: $JungleMistColor;
+        img {
+            width: 50px;
+            margin-left: 3px;
+            margin-right: 3px;
+        }
+    }
 }
 
 .nav-link {
     color: #90c3fb !important;
     border: transparent !important;
     background-color: transparent !important;
-}
 
-.nav-link.active {
-    border-bottom: 3px solid #90c3fb !important;
+    &.active {
+        border-bottom: 3px solid #90c3fb !important;
+    }
 }
 
 .fa-trophy {
@@ -62,5 +74,3 @@ body {
 .progress {
     height: 0.5rem !important;
 }
-
-

@@ -5,7 +5,6 @@ import { faTrophy } from '@fortawesome/free-solid-svg-icons';
 import moment from 'moment';
 import Table from './Table';
 import { Link } from 'react-router-dom';
-import { Badge } from 'reactstrap';
 
 export interface ProMatch {
     match_id: number;
@@ -41,25 +40,27 @@ const ProMatchesTable = ({ matches }: ProMatchesTableProps) => {
         },
         {
             header: "Duration",
-            renderCell: ({ duration }) => toMMSS(duration), cellClassName: "text-center"
+            renderCell: ({ duration }) => toMMSS(duration), cellClassName: "align-middle"
         },
         {
             header: "Radiant", headerClassName: "text-success",
             renderCell: ({ radiant_win, radiant_name }) => <>
                 {radiant_win && <FontAwesomeIcon icon={faTrophy} size="sm" className="mr-1" />}
                 <span className="text-success">{radiant_name}</span>
-            </>
+            </>,
+            cellClassName: "align-middle"
         },
         {
             header: "Dire", headerClassName: "text-danger",
             renderCell: ({ radiant_win, dire_name }) => <>
                 {!radiant_win && <FontAwesomeIcon icon={faTrophy} size="sm" className="mr-1" />}
                 <span className="text-danger ">{dire_name}</span>
-            </>
+            </>,
+            cellClassName: "align-middle"
         },
     ];
 
-    return <Table columns={columns} data={matches} keySelector="match_id" />
+    return <Table columns={columns} data={matches} keySelector="match_id"/>
 }
 
 export default ProMatchesTable;
