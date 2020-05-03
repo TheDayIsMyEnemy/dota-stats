@@ -4,7 +4,7 @@ import heroes from 'dotaconstants/build/heroes.json';
 import settings from '../config';
 import { toMMSS } from '../utilities/utilities';
 import { Link } from 'react-router-dom';
-import moment, { duration } from 'moment';
+import moment from 'moment';
 
 export interface PublicMatch {
     match_id: number;
