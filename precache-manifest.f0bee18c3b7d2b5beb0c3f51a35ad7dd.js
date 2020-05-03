@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7e2e85dde7899ce51f721a58b5faa67c",
+    "revision": "81be952fcc8ab4d7e546422101b196de",
     "url": "/dota-stats/index.html"
   },
   {
-    "revision": "a625750aaeb9b6afa553",
-    "url": "/dota-stats/static/css/main.ce3ba87a.chunk.css"
+    "revision": "ae03e359883fa330c293",
+    "url": "/dota-stats/static/css/main.764439fb.chunk.css"
   },
   {
     "revision": "b7eef1a42d15d415a4b3",
@@ -24,23 +24,23 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/dota-stats/static/js/4.f3b390a7.chunk.js"
   },
   {
-    "revision": "1ee5be509ae6b0451d05",
-    "url": "/dota-stats/static/js/5.dd8b5973.chunk.js"
+    "revision": "b71a3829d9cf548a944c",
+    "url": "/dota-stats/static/js/5.8864299c.chunk.js"
   },
   {
-    "revision": "62832184e96cbcf6ea37",
-    "url": "/dota-stats/static/js/6.d67ced79.chunk.js"
+    "revision": "11a4f767b50080e24301",
+    "url": "/dota-stats/static/js/6.2e6c892e.chunk.js"
   },
   {
     "revision": "a35f4d9e8a4c31034716",
     "url": "/dota-stats/static/js/7.2239ced9.chunk.js"
   },
   {
-    "revision": "a625750aaeb9b6afa553",
-    "url": "/dota-stats/static/js/main.101a1638.chunk.js"
+    "revision": "ae03e359883fa330c293",
+    "url": "/dota-stats/static/js/main.ba062438.chunk.js"
   },
   {
-    "revision": "13e816e1b80bf1baec90",
-    "url": "/dota-stats/static/js/runtime-main.7489b972.js"
+    "revision": "72d38b9aceb2ab26a913",
+    "url": "/dota-stats/static/js/runtime-main.bd35db34.js"
   }
 ]);
