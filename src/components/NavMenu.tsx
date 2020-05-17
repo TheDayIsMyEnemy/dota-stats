@@ -12,7 +12,7 @@ const NavMenu = () => {
     return <header>
         <Navbar className="navbar-expand-sm navbar-toggleable-sm  box-shadow mb-3" light>
             <Container>
-                <NavbarBrand tag={Link} className="text-jungle-mist" to="/">Dota Stats</NavbarBrand>
+                <NavbarBrand tag={Link} to="/">Dota Stats</NavbarBrand>
                 <NavbarToggler onClick={toggleNavbar} className="mr-2" />
                 <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={!collapsed} navbar>
                     <ul className="navbar-nav flex-grow">
