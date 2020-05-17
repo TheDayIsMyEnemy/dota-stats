@@ -47,16 +47,14 @@ const ProMatchesTable = ({ matches }: ProMatchesTableProps) => {
             renderCell: ({ radiant_win, radiant_name }) => <>
                 {radiant_win && <FontAwesomeIcon icon={faTrophy} size="sm" className="mr-1" />}
                 <span className="text-success">{radiant_name}</span>
-            </>,
-            cellClassName: "align-middle"
+            </>
         },
         {
             header: "Dire", headerClassName: "text-danger",
             renderCell: ({ radiant_win, dire_name }) => <>
                 {!radiant_win && <FontAwesomeIcon icon={faTrophy} size="sm" className="mr-1" />}
                 <span className="text-danger ">{dire_name}</span>
-            </>,
-            cellClassName: "align-middle"
+            </>
         },
     ];
 

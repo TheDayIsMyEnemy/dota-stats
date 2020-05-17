@@ -48,18 +48,15 @@ const PublicMatchesTable = ({ matches }: PublicMatchesTableProps) => {
         },
         {
             header: "Duration",
-            renderCell: ({ duration }) => toMMSS(duration),
-            cellClassName: "align-middle"
+            renderCell: ({ duration }) => toMMSS(duration)
         },
         {
             header: "Radiant",
-            renderCell: ({ radiant_team }) => renderHeroImages(radiant_team),
-            cellClassName: "align-middle"
+            renderCell: ({ radiant_team }) => renderHeroImages(radiant_team)
         },
         {
             header: "Dire",
-            renderCell: ({ dire_team }) => renderHeroImages(dire_team),
-            cellClassName: "align-middle"
+            renderCell: ({ dire_team }) => renderHeroImages(dire_team)
         }
     ];
 

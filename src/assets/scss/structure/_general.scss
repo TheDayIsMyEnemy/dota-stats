@@ -36,10 +36,12 @@ body {
         border-bottom: 2px solid #c5c5c5 !important;
         color: #c5c5c5;
         padding: 0.5rem 1rem !important;
+
     }
     td {
         color: #b7a3a3;
         padding: 0.5rem 1rem !important;
+        vertical-align: middle;
 
         img {
             width: 50px;
@@ -58,8 +60,6 @@ body {
         border-bottom: 3px solid #90c3fb !important;
     }
 }
-
-
 
 .fa-trophy {
     color: #ffc107;

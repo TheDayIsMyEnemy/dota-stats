@@ -28,13 +28,15 @@ const TeamsTable = ({ teams }: TeamsTableProps) => {
             header: "Rank",
             renderCell: (_, index) => getOrdinal(++index)
         },
-        {
+        {                                                                                                                                                                                                                                                                               
             header: "Name",
             renderCell: ({ last_match_time, name, tag, logo_url }) =>
                 <>
                     <img key={tag} src={logo_url} alt={tag} />
-                    <Link to="">{name}</Link>
-                    <div className="text-sm">{moment.unix(last_match_time).fromNow()}</div>
+                    <div className="d-inline-block align-middle ml-2">
+                        <Link to="">{name}</Link>
+                        <div className="text-sm">{moment.unix(last_match_time).fromNow()}</div>
+                    </div>
                 </>
         },
         {
@@ -57,12 +59,10 @@ const TeamsTable = ({ teams }: TeamsTableProps) => {
         }
     ];
 
-    return <Table columns={columns} data={teams && teams.sort((a, b) => {
-        if (a.rating == b.rating) {
-            return b.last_match_time - a.last_match_time
-        }
-        return b.rating - a.rating;
-    }).slice(0, 100)} keySelector="team_id" />
+    let currentYear = new Date().getFullYear();
+    teams = teams && teams.filter(t => moment.unix(t.last_match_time).year() == currentYear).slice(0, 100);
+
+    return <Table columns={columns} data={teams} keySelector="team_id" />
 }
 
 export default TeamsTable;
