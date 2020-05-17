@@ -26,4 +26,24 @@ const getPercentage = (total, number) => {
     return (number / total * 100).toFixed(1);
 }
 
-export { toMMSS, enumIsDefined, getOrdinal, getPercentage };
+const tiers = {
+    "rank_tier_0": "Uncalibrated",
+    "rank_tier_1": "Herald",
+    "rank_tier_2": "Guardian",
+    "rank_tier_3": "Crusader",
+    "rank_tier_4": "Archon",
+    "rank_tier_5": "Legend",
+    "rank_tier_6": "Ancient",
+    "rank_tier_7": "Divine",
+    "rank_tier_8": "Immortal",
+  };
+  
+const rankTierToString = (rankTier) => {
+    let rank = tiers[`rank_tier_${rankTier / 10}`];
+    if (rankTier > 9 && rankTier !== 80) {
+      rank += ` [${rankTier % 10}]`;
+    }
+    return rank;
+  }
+
+export { toMMSS, enumIsDefined, getOrdinal, getPercentage, rankTierToString };

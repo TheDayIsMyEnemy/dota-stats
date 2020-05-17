@@ -2,7 +2,7 @@ import React from 'react';
 import Table from './Table';
 import heroes from 'dotaconstants/build/heroes.json';
 import settings from '../config';
-import { toMMSS } from '../utilities/utilities';
+import { toMMSS, rankTierToString } from '../utilities/utilities';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 
@@ -41,9 +41,9 @@ const PublicMatchesTable = ({ matches }: PublicMatchesTableProps) => {
     const columns = [
         {
             header: "Match Id",
-            renderCell: ({ match_id, start_time, duration, cluster }) => <>
+            renderCell: ({ match_id, start_time, duration, avg_rank_tier }) => <>
                 <Link to="">{match_id}</Link>
-                <div className="text-sm">{moment.unix(start_time + duration).fromNow()}/{cluster}</div>
+                <div className="text-sm">{moment.unix(start_time + duration).fromNow()}/{rankTierToString(avg_rank_tier)    }</div>
             </>
         },
         {
